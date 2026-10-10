@@ -8,6 +8,8 @@ on:
   push:
     branches:
       - 'main'
+    paths:
+      - 'function_app/**'
   workflow_dispatch:
 
 env:
@@ -35,12 +37,13 @@ jobs:
           source venv/bin/activate
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r function_app/requirements.txt
 
       # Optional: Add step to run tests here
 
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+        working-directory: function_app
+        run: zip ../release.zip ./* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -73,5 +76,7 @@ jobs:
           slot-name: 'Production'
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8C445CAA3FEC4C4D9CDEC57D82DCCAD8 }}
+          scm-do-build-during-deployment: true
+          enable-oryx-build: true
           sku: 'flexconsumption'
         
