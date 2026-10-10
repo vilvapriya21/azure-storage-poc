@@ -1,0 +1,10 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "<paste from portal>",
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "UPLOAD_CONTAINER": "uploads",
+    "EXTRACTED_CONTAINER": "extracted",
+    "TABLE_NAME": "filestatus"
+  }
+}

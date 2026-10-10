@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Upload PDFs and monitor Azure Storage processing.">
+    <title>Azure Storage PDF Processing</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-content">
+        <div class="brand-mark" aria-hidden="true">PDF</div>
+        <div>
+          <p class="eyebrow">Azure Storage POC</p>
+          <h1>PDF Processing</h1>
+          <p class="subtitle">Upload a document and follow its text extraction status.</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="card upload-card" aria-labelledby="upload-heading">
+        <div class="section-heading">
+          <h2 id="upload-heading">Upload a PDF</h2>
+          <p>Choose one PDF up to 10 MB.</p>
+        </div>
+        <form id="upload-form" class="upload-form">
+          <label class="file-picker" for="pdf-file">
+            <span class="file-picker-title">Select document</span>
+            <span id="file-name" class="file-picker-name">No file selected</span>
+          </label>
+          <input id="pdf-file" name="file" type="file" accept="application/pdf,.pdf" required>
+          <button id="upload-button" type="submit">Upload PDF</button>
+        </form>
+        <div id="upload-progress-wrap" class="progress-wrap" hidden>
+          <div class="progress-track" role="progressbar" aria-label="Upload progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div id="upload-progress" class="progress-bar"></div>
+          </div>
+        </div>
+        <p id="upload-message" class="message" role="status" aria-live="polite"></p>
+      </section>
+
+      <div class="content-grid">
+        <section class="card files-card" aria-labelledby="files-heading">
+          <div class="section-heading files-heading-row">
+            <div>
+              <h2 id="files-heading">Files</h2>
+              <p>Processing status refreshes every 3 seconds.</p>
+            </div>
+            <span id="refresh-indicator" class="refresh-indicator" aria-live="polite">Loading…</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Filename</th>
+                  <th scope="col">Uploaded</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody id="files-body"></tbody>
+            </table>
+            <p id="files-empty" class="empty-state" hidden>No PDFs have been uploaded yet.</p>
+            <p id="files-error" class="message message-error" role="alert" hidden></p>
+          </div>
+        </section>
+
+        <aside class="card detail-card" aria-labelledby="detail-heading">
+          <div id="detail-placeholder" class="detail-placeholder">
+            <div class="document-icon" aria-hidden="true">PDF</div>
+            <h2 id="detail-heading">File details</h2>
+            <p>Select a row to view its status and extracted text.</p>
+          </div>
+          <div id="detail-content" hidden>
+            <div class="detail-header">
+              <div class="detail-title-wrap">
+                <p class="eyebrow">Selected file</p>
+                <h2 id="detail-filename"></h2>
+              </div>
+              <span id="detail-status" class="status-badge"></span>
+            </div>
+            <div class="detail-meta">
+              <span>Uploaded</span>
+              <strong id="detail-date"></strong>
+            </div>
+            <div class="text-heading"><h3>Extracted text</h3></div>
+            <pre id="extracted-text" tabindex="0"></pre>
+            <a id="download-link" class="download-button" href="#">Download original PDF</a>
+          </div>
+          <p id="detail-error" class="message message-error" role="alert" hidden></p>
+        </aside>
+      </div>
+    </main>
+  </body>
+</html>

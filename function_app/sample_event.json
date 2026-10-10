@@ -1,0 +1,23 @@
+{
+  "id": "f3a10b95-26f0-4c87-a9fd-2b899e521b89",
+  "topic": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-rg/providers/Microsoft.Storage/storageAccounts/exampleaccount",
+  "subject": "/blobServices/default/containers/uploads/blobs/550e8400-e29b-41d4-a716-446655440000/sample.pdf",
+  "data": {
+    "api": "PutBlob",
+    "clientRequestId": "3f14b680-2dc8-4a2d-b3ec-2a6f948c1372",
+    "requestId": "7b695ea1-401e-0043-3b1e-cb24d4000000",
+    "eTag": "0x8DC000000000000",
+    "contentType": "application/pdf",
+    "contentLength": 12345,
+    "blobType": "BlockBlob",
+    "url": "https://exampleaccount.blob.core.windows.net/uploads/550e8400-e29b-41d4-a716-446655440000/sample.pdf",
+    "sequencer": "0000000000000000000000000000000000000000000000000000000000000000",
+    "storageDiagnostics": {
+      "batchId": "d6c9499c-992c-4e1c-84d8-bad5f4d79f83"
+    }
+  },
+  "eventType": "Microsoft.Storage.BlobCreated",
+  "dataVersion": "",
+  "metadataVersion": "1",
+  "eventTime": "2026-10-10T06:30:00Z"
+}

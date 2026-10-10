@@ -1,0 +1,7 @@
+azure-data-tables
+azure-storage-blob
+fastapi
+gunicorn
+pydantic-settings
+python-multipart
+uvicorn
